@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Generated test output
+allure-results/
+allure-report/
+playwright-report/
+test-results/
+
+# Auth session
+.auth/
+
+# Environment variables
+.env
+.env.local
+
+# TypeScript build
+dist/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+*.iml

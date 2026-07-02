@@ -1,0 +1,13 @@
+{
+  "files.exclude": {
+    "allure-results/": true,
+    "playwright-report/": true,
+    "test-results/": true,
+    "node_modules/": true
+  },
+  "cucumber.features": ["tests/features/**/*.feature"],
+  "cucumber.glue": [
+    "tests/step-definitions/**/*.ts",
+    "tests/support/**/*.ts"
+  ]
+}

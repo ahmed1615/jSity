@@ -1,0 +1,37 @@
+{
+  "name": "qa-take-home-challenge",
+  "version": "1.0.0",
+  "description": "QA Take Home Challenge — TypeScript + Playwright automation suite",
+  "scripts": {
+    "test": "playwright test",
+    "test:e1": "playwright test tests/exercise1/",
+    "test:headed": "playwright test --headed",
+    "test:report": "playwright show-report",
+    "lint": "tsc --noEmit",
+    "jsity": "cucumber-js --config cucumber.js",
+    "jsity:web": "VIEWPORT=web cucumber-js --config cucumber.js",
+    "jsity:mobile": "VIEWPORT=mobile cucumber-js --config cucumber.js",
+    "jsity:all": "npm run jsity:web && npm run jsity:mobile",
+    "jsity:saucedemo": "cucumber-js --config cucumber.js --tags '@saucedemo'",
+    "jsity:smoke": "cucumber-js --config cucumber.js --tags '@smoke'",
+    "jsity:login": "cucumber-js --config cucumber.js --tags '@login'",
+    "jsity:home-page": "cucumber-js --config cucumber.js --tags '@home-page'",
+    "jsity:cart": "cucumber-js --config cucumber.js --tags '@cart'",
+    "jsity:checkout": "cucumber-js --config cucumber.js --tags '@checkout'",
+    "allure:generate": "allure generate allure-results -o allure-report --clean",
+    "allure:open": "allure open allure-report &",
+    "allure:run": "npm run jsity:all && npm run allure:generate"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^11.0.1",
+    "@faker-js/faker": "^9.9.0",
+    "@playwright/test": "^1.45.0",
+    "@types/node": "^20.19.43",
+    "allure-commandline": "^2.43.0",
+    "allure-cucumberjs": "^3.10.2",
+    "allure-playwright": "^3.10.2",
+    "dotenv": "^17.4.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.0.0"
+  }
+}
