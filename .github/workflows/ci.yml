@@ -41,12 +41,14 @@ jobs:
           VALID_PASSWORD: ${{ secrets.VALID_PASSWORD || 'secret_sauce' }}
         run: npm run allure:run
 
-      - name: Upload HTML report
+      - name: Upload HTML reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cucumber-report
-          path: cucumber-report.html
+          name: cucumber-reports
+          path: |
+            cucumber-report-web.html
+            cucumber-report-mobile.html
           retention-days: 7
 
       - name: Deploy Allure report to GitHub Pages
