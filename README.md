@@ -68,8 +68,9 @@ npm run jsity
 
 ### Run by viewport
 ```bash
-npm run jsity:web     
+npm run jsity:web    
 npm run jsity:mobile  
+npm run jsity:all     
 ```
 
 ### Run by feature
@@ -87,17 +88,26 @@ npm run jsity:smoke
 
 ---
 
-## Allure Report
+## Reports
 
-### Run tests and generate report
+### HTML Reports (open directly in browser)
 ```bash
-npm run allure:run
+npm run jsity:web    
+npm run jsity:mobile
+
+open cucumber-report-web.html
+open cucumber-report-mobile.html
 ```
 
-### Open existing report
+### Allure Report
 ```bash
-npm run allure:open
+npm run allure:run   
+npm run allure:open  
 ```
+
+### CI Report
+After each pipeline run, the Allure report is published to GitHub Pages:
+`https://ahmed1615.github.io/jSity`
 
 ---
 
@@ -109,7 +119,7 @@ npm run allure:open
 | Home Page | 10 | `@home-page` |
 | Cart | 5 | `@cart` |
 | Checkout | 6 | `@checkout` |
-| **Total** | **28** | |
+| **Total** | **28 × 2 viewports = 56** | |
 
 ### What is tested
 
@@ -140,17 +150,10 @@ npm run allure:open
 
 **Responsive Behavior**
 
-Tests run on both **Desktop** and **Mobile** viewports using dedicated scripts:
-
-```bash
-npm run jsity:web 
-npm run jsity:mobile  
-```
-
-| Viewport | Width | Height |
-|----------|-------|--------|
-| Desktop | 1280px | 720px |
-| Mobile | 375px | 812px |
+| Viewport | Width | Height | Report |
+|----------|-------|--------|--------|
+| Desktop | 1280px | 720px | `cucumber-report-web.html` |
+| Mobile | 375px | 812px | `cucumber-report-mobile.html` |
 
 ---
 
