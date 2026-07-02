@@ -32,9 +32,9 @@ jobs:
 
       - name: Run tests (${{ matrix.viewport }})
         env:
-          BASE_URL: ${{ secrets.BASE_URL }}
-          VALID_USERNAME: ${{ secrets.VALID_USERNAME }}
-          VALID_PASSWORD: ${{ secrets.VALID_PASSWORD }}
+          BASE_URL: ${{ secrets.BASE_URL || 'https://www.saucedemo.com' }}
+          VALID_USERNAME: ${{ secrets.VALID_USERNAME || 'standard_user' }}
+          VALID_PASSWORD: ${{ secrets.VALID_PASSWORD || 'secret_sauce' }}
         run: npm run jsity:${{ matrix.viewport }}
 
       - name: Upload Allure results
