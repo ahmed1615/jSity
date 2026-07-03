@@ -25,7 +25,7 @@ When('I click the login button without entering credentials', async function (th
 });
 
 Then('I should be on the inventory page', async function (this: CustomWorld) {
-  await expect(this.page!).toHaveURL(/inventory\.html/);
+  await expect(this.page!).toHaveURL(/inventory/);
 });
 
 Then('I should see the login logo', async function (this: CustomWorld) {

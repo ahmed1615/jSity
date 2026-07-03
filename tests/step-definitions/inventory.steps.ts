@@ -19,7 +19,7 @@ When(
 When(
   'I sort the home page by {string}',
   async function (this: CustomWorld, option: string) {
-    await this.inventoryPage!.sortBy(option as 'az' | 'za' | 'lohi' | 'hilo');
+    await this.inventoryPage!.sortBy(option);
   },
 );
 

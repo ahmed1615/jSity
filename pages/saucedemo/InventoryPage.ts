@@ -23,13 +23,13 @@ export class InventoryPage {
     return this.productItems.count();
   }
 
-  async sortBy(option: 'az' | 'za' | 'lohi' | 'hilo'): Promise<void> {
-    await this.sortDropdown.selectOption(option);
+  async sortBy(value: string): Promise<void> {
+    await this.sortDropdown.selectOption({ value });
   }
 
   async addProductToCart(productName: string): Promise<void> {
-    const slug = productName.toLowerCase().replace(/\s+/g, '-');
-    await this.page.locator(`[data-test="add-to-cart-${slug}"]`).click();
+    const inputName = productName.toLowerCase().replace(/\s+/g, '-');
+    await this.page.locator(`[data-test="add-to-cart-${inputName}"]`).click();
   }
 
   async getCartBadgeCount(): Promise<number> {
@@ -58,8 +58,8 @@ export class InventoryPage {
   }
 
   async removeFromCart(productName: string): Promise<void> {
-    const slug = productName.toLowerCase().replace(/\s+/g, '-');
-    await this.page.locator(`[data-test="remove-${slug}"]`).click();
+    const inputName = productName.toLowerCase().replace(/\s+/g, '-');
+    await this.page.locator(`[data-test="remove-${inputName}"]`).click();
   }
 
   async goToCart(): Promise<void> {
