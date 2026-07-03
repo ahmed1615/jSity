@@ -34,20 +34,36 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install chromium --with-deps
 
-      - name: Run tests and generate report
+      - name: Run web tests
         env:
           BASE_URL: ${{ secrets.BASE_URL || 'https://www.saucedemo.com' }}
           VALID_USERNAME: ${{ secrets.VALID_USERNAME || 'standard_user' }}
           VALID_PASSWORD: ${{ secrets.VALID_PASSWORD || 'secret_sauce' }}
           CI: true
-        run: npm run allure:run
+          VIEWPORT: web
+        run: npx cucumber-js --config cucumber.js --format html:cucumber-report-web.html
 
-      - name: Upload HTML report
+      - name: Run mobile tests
+        env:
+          BASE_URL: ${{ secrets.BASE_URL || 'https://www.saucedemo.com' }}
+          VALID_USERNAME: ${{ secrets.VALID_USERNAME || 'standard_user' }}
+          VALID_PASSWORD: ${{ secrets.VALID_PASSWORD || 'secret_sauce' }}
+          CI: true
+          VIEWPORT: mobile
+        run: npx cucumber-js --config cucumber.js --format html:cucumber-report-mobile.html
+
+      - name: Generate Allure report
+        if: always()
+        run: npm run allure:generate
+
+      - name: Upload HTML reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cucumber-report
-          path: cucumber-report.html
+          name: cucumber-reports
+          path: |
+            cucumber-report-web.html
+            cucumber-report-mobile.html
           retention-days: 7
 
       - name: Deploy Allure report to GitHub Pages

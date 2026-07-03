@@ -25,9 +25,12 @@ export class CustomWorld extends World {
   async init(): Promise<void> {
     const storageState = fs.existsSync(SESSION_FILE) ? SESSION_FILE : undefined;
     this.browser = await chromium.launch({ headless: true });
+    const isMobile = process.env.VIEWPORT === 'mobile';
     this.context = await this.browser.newContext({
       storageState,
-      viewport: { width: 1280, height: 720 },
+      viewport: isMobile
+        ? { width: 375, height: 812 }
+        : { width: 1280, height: 720 },
     });
     this.page = await this.context.newPage();
     this.loginPage = new LoginPage(this.page);
