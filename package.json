@@ -17,7 +17,7 @@
     "jsity:checkout": "cucumber-js --config cucumber.js --tags '@checkout'",
     "allure:generate": "allure generate allure-results -o allure-report --clean",
     "allure:open": "allure open allure-report &",
-    "allure:run": "npm run jsity:all && npm run allure:generate"
+    "allure:run": "npm run jsity && npm run allure:generate"
   },
   "devDependencies": {
     "@cucumber/cucumber": "^11.0.1",
