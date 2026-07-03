@@ -6,8 +6,7 @@ allure-results/
 allure-report/
 playwright-report/
 test-results/
-cucumber-report-web.html
-cucumber-report-mobile.html
+cucumber-report*.html
 
 # Auth session
 .auth/
